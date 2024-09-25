@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Color Change</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            font-size: 18px;
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .red {
+            background-color: red;
+            color: white;
+        }
+        .green {
+            background-color: green;
+            color: white;
+        }
+        .date {
+            display: inline-block;
+            margin-left: 15px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>ירוק בעיניים - משפחת גרודה</h1>
+    <div id="buttons">
+        <!-- The name buttons -->
+        <button class="red" onclick="toggleButton(this)">אבא</button>
+        <span class="date"></span><br>
+        
+        <button class="red" onclick="toggleButton(this)">אמא</button>
+        <span class="date"></span><br>
+        
+        <button class="red" onclick="toggleButton(this)">אורי</button>
+        <span class="date"></span><br>
+        
+        <button class="red" onclick="toggleButton(this)">אלה</button>
+        <span class="date"></span><br>
+        
+        <button class="red" onclick="toggleButton(this)">שחר</button>
+        <span class="date"></span><br>
+        
+        <button class="red" onclick="toggleButton(this)">נבו</button>
+        <span class="date"></span><br>
+    </div>
+
+    <!-- Reset button -->
+    <button onclick="resetButtons()">Reset</button>
+
+    <script>
+        // Function to toggle button color and display date/time
+        function toggleButton(button) {
+            const currentTime = new Date().toLocaleString();
+            const dateSpan = button.nextElementSibling;
+
+            if (button.classList.contains('red')) {
+                button.classList.remove('red');
+                button.classList.add('green');
+                dateSpan.textContent = currentTime;
+            } else {
+                button.classList.remove('green');
+                button.classList.add('red');
+                dateSpan.textContent = "";
+            }
+        }
+
+        // Function to reset all buttons to red and remove date/time
+        function resetButtons() {
+            const buttons = document.querySelectorAll('#buttons button');
+            const dateSpans = document.querySelectorAll('.date');
+
+            buttons.forEach(button => {
+                button.classList.remove('green');
+                button.classList.add('red');
+            });
+
+            dateSpans.forEach(span => {
+                span.textContent = "";
+            });
+        }
+    </script>
+</body>
+</html>
